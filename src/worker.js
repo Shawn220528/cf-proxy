@@ -273,6 +273,8 @@ function buildProxyHeaders(originalHeaders, targetUrl) {
   // 复制更多请求头，避免被检测
   const importantHeaders = [
     'accept', 'accept-encoding', 'accept-language', 'authorization',
+    // 保留 Anthropic 认证和版本头，避免代理丢失调用凭据与协议版本。
+    'x-api-key', 'anthropic-version',
     'content-type', 'user-agent', 'cache-control', 'pragma', 'content-length',
     'origin', 'referer', 'cookie', 'x-requested-with'
   ];
